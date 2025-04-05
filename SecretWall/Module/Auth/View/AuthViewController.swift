@@ -22,58 +22,49 @@ class AuthViewController: UIViewController {
         viewModel.delegate = self
         guard let authView = self.view as? AuthView else { return }
         authView.signInButton.addTarget(self, action: #selector(actionSignInButton), for: .touchUpInside)
-//        authView.signInButton.addTarget(self, action: #selector(actionSignInButton), for: .touchUpInside)
         
     }
     
     @objc func actionSignInButton() {
-        viewModel.login()
+        let authProvider = ASAuthorizationAppleIDProvider()
+        let request = authProvider.createRequest()
+        request.requestedScopes = []
+        
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        controller.performRequests()
     }
-    
-//    @objc func actionSignInButton() {
-//        let authProvider = ASAuthorizationAppleIDProvider()
-//        let request = authProvider.createRequest()
-//        request.requestedScopes = []
-//        
-//        let controller = ASAuthorizationController(authorizationRequests: [request])
-//        controller.delegate = self
-//        controller.presentationContextProvider = self
-//        controller.performRequests()
-//    }
 }
 
 extension AuthViewController: AuthViewModelDelegate {
-    func didRequestOnboarding() {
+    func navigateToOnboarding() {
         coordinator?.navigateToOnboarding()
     }
 }
 
-//extension AuthViewController: ASAuthorizationControllerDelegate {
-//    func authorizationController(
-//        controller: ASAuthorizationController,
-//        didCompleteWithAuthorization authorization: ASAuthorization
-//    ) {
-//        switch authorization.credential {
-//        case let appleIDCredential as ASAuthorizationAppleIDCredential:
-//            print("Apple ID: \(appleIDCredential.identityToken)")
-//        case let passwordCredential as ASPasswordCredential:
-//            print("Password credential: \(passwordCredential.user)")
-//        default:
-//            print(authorization.credential)
-//            break
-//        }
-//    }
-//    
-//    func authorizationController(
-//        controller: ASAuthorizationController,
-//        didCompleteWithError error: Error
-//    ) {
-//        print("❌ Erro ao autenticar:", error.localizedDescription)
-//    }
-//}
-//
-//extension AuthViewController: ASAuthorizationControllerPresentationContextProviding {
-//    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-//        self.view.window!
-//    }
-//}
+extension AuthViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithAuthorization authorization: ASAuthorization
+    ) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            let identityToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
+            viewModel.loginWithApple(identityToken: identityToken)
+        default:
+            break
+        }
+    }
+    
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithError error: Error
+    ) {}
+}
+
+extension AuthViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        self.view.window!
+    }
+}

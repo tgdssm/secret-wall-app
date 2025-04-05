@@ -24,9 +24,7 @@ class AuthCoordinator: Coordinator, AuthViewControllerDelegate {
 
 extension AuthCoordinator {
     func showSignInScreen() {
-        let vc = AuthViewController()
-        vc.coordinator = self
-        vc.viewModel = AuthViewModel()
+        let vc = AuthFactory.makeAuthViewController(coordinator: self)
         navigationController.setViewControllers([vc], animated: false)
     }
     

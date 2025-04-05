@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DFA6B2D12DA0D2AF00EA45F3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6B2D02DA0D2AF00EA45F3 /* Security.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		DF319B912D948A0C00C4A602 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		DF319B7A2D948A0B00C4A602 /* SecretWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecretWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF319B902D948A0C00C4A602 /* SecretWallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecretWallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF319B9A2D948A0C00C4A602 /* SecretWallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecretWallUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFA6B2D02DA0D2AF00EA45F3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFA6B2D12DA0D2AF00EA45F3 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,7 @@
 				DF319B7C2D948A0B00C4A602 /* SecretWall */,
 				DF319B932D948A0C00C4A602 /* SecretWallTests */,
 				DF319B9D2D948A0C00C4A602 /* SecretWallUITests */,
+				DFA6B2CF2DA0D2AF00EA45F3 /* Frameworks */,
 				DF319B7B2D948A0B00C4A602 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +110,14 @@
 				DF319B9A2D948A0C00C4A602 /* SecretWallUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DFA6B2CF2DA0D2AF00EA45F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFA6B2D02DA0D2AF00EA45F3 /* Security.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,11 +302,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "http://192.168.1.76:8080";
 				CODE_SIGN_ENTITLEMENTS = SecretWall/SecretWall.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P98FQD862C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SecretWall/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -318,11 +334,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "http://192.168.1.76:8080";
 				CODE_SIGN_ENTITLEMENTS = SecretWall/SecretWall.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P98FQD862C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SecretWall/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

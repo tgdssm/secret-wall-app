@@ -6,5 +6,5 @@
 //
 
 protocol AuthViewModelDelegate: AnyObject {
-    func didRequestOnboarding()
+    func navigateToOnboarding()
 }
