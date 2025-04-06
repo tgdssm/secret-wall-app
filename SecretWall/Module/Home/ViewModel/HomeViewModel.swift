@@ -5,6 +5,6 @@
 //  Created by Thalisson Melo on 29/03/25.
 //
 
-class OnboardingViewModel {
-    weak var delegate: OnboardingViewModelDelegate?
+class HomeViewModel {
+    weak var delegate: HomeViewModelDelegate?
 }

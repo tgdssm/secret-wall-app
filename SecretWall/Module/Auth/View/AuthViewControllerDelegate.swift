@@ -6,5 +6,5 @@
 //
 
 protocol AuthViewControllerDelegate: AnyObject {
-    func navigateToOnboarding()
+    func navigateToHome()
 }

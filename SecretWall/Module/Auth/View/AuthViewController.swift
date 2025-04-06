@@ -38,8 +38,35 @@ class AuthViewController: UIViewController {
 }
 
 extension AuthViewController: AuthViewModelDelegate {
-    func navigateToOnboarding() {
-        coordinator?.navigateToOnboarding()
+    func showError() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Erro", message: "Não foi possível completar o login.", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction(alertAction)
+            self.present(alertController, animated: true)
+        }
+    }
+    
+    func startLoading() {
+        guard let authView = self.view as? AuthView else { return }
+        DispatchQueue.main.async {
+            authView.isUserInteractionEnabled = false
+            authView.loadingIndicator.startAnimating()
+        }
+    }
+    
+    func stopLoading() {
+        guard let authView = self.view as? AuthView else { return }
+        DispatchQueue.main.async {
+            authView.loadingIndicator.stopAnimating()
+            authView.isUserInteractionEnabled = true
+        }
+    }
+    
+    func navigateToHome() {
+        DispatchQueue.main.async {
+            self.coordinator?.navigateToHome()
+        }
     }
 }
 

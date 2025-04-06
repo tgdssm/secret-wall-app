@@ -34,8 +34,8 @@ class AppCoordinator: Coordinator {
         starterCoordinator?.start()
     }
     
-    func navigateToOnboarding() {
-        let onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController, parentCoordinator: self)
-        onboardingCoordinator.start()
+    func navigateToHome() {
+        let homeCoordinator = HomeCoordinator(navigationController: navigationController, parentCoordinator: self)
+        homeCoordinator.start()
     }
 }

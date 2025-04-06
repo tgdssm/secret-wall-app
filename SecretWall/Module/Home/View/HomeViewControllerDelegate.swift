@@ -5,6 +5,6 @@
 //  Created by Thalisson Melo on 29/03/25.
 //
 
-protocol OnboardingViewControllerDelegate: AnyObject {
+protocol HomeViewControllerDelegate: AnyObject {
     func navigateToHome()
 }

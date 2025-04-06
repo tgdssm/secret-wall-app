@@ -5,6 +5,6 @@
 //  Created by Thalisson Melo on 29/03/25.
 //
 
-protocol OnboardingViewModelDelegate: AnyObject {
+protocol HomeViewModelDelegate: AnyObject {
     func didRequestHome()
 }

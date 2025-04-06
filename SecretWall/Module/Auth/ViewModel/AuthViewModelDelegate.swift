@@ -6,5 +6,8 @@
 //
 
 protocol AuthViewModelDelegate: AnyObject {
-    func navigateToOnboarding()
+    func navigateToHome()
+    func startLoading()
+    func stopLoading()
+    func showError()
 }

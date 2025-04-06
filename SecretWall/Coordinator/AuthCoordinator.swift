@@ -28,7 +28,7 @@ extension AuthCoordinator {
         navigationController.setViewControllers([vc], animated: false)
     }
     
-    func navigateToOnboarding() {
-        parentCoordinator?.navigateToOnboarding()
+    func navigateToHome() {
+        parentCoordinator?.navigateToHome()
     }
 }

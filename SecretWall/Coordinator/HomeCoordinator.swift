@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnboardingCoordinator: Coordinator, OnboardingViewControllerDelegate {
+class HomeCoordinator: Coordinator, HomeViewControllerDelegate {
     internal var navigationController: UINavigationController
     weak var parentCoordinator: AppCoordinator?
 
@@ -18,14 +18,14 @@ class OnboardingCoordinator: Coordinator, OnboardingViewControllerDelegate {
     
     
     func start() {
-        showOnboarding()
+        showHome()
     }
 }
 
-extension OnboardingCoordinator {
-    func showOnboarding() {
-        let vc = OnboardingViewController()
-        vc.viewModel = OnboardingViewModel()
+extension HomeCoordinator {
+    func showHome() {
+        let vc = HomeViewController()
+        vc.viewModel = HomeViewModel()
         vc.delegate = self
         navigationController.setViewControllers([vc], animated: false)
     }

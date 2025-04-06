@@ -14,21 +14,23 @@ class AuthViewModel {
     }
     
     func loginWithApple(identityToken: String) {
+        delegate?.startLoading()
         Task {
             do {
                 let response = try await authService.loginWithApple(authRequest: AuthRequest(identityToken: identityToken))
                 try KeychainStorage.saveAccessToken(response.accessToken, service: "access-token", account: "apple-auth")
-                navigateToOnboarding()
-                print(response)
+                delegate?.stopLoading()
+                navigateToHome()
             } catch {
-                print(error)
+                delegate?.showError()
+                delegate?.stopLoading()
             }
         }
     }
 }
 
 extension AuthViewModel {
-    private func navigateToOnboarding() {
-        delegate?.navigateToOnboarding()
+    private func navigateToHome() {
+        delegate?.navigateToHome()
     }
 }
