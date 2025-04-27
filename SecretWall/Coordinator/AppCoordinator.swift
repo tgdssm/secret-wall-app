@@ -9,7 +9,8 @@ import UIKit
 
 protocol Coordinator {
     var navigationController: UINavigationController { get }
-    func start()
+    func startFromAuth()
+    func startFromHome()
 }
 
 class AppCoordinator: Coordinator {
@@ -21,7 +22,6 @@ class AppCoordinator: Coordinator {
     init(window: UIWindow, navigationController: UINavigationController = UINavigationController()) {
         self.window = window
         self.navigationController = navigationController
-        starterCoordinator = AuthCoordinator(navigationController: navigationController, parentCoordinator: self)
         setupWindow()
     }
     
@@ -30,7 +30,13 @@ class AppCoordinator: Coordinator {
         window.makeKeyAndVisible()
     }
     
-    func start() {
+    func startFromAuth() {
+        starterCoordinator = AuthCoordinator(navigationController: navigationController, parentCoordinator: self)
+        starterCoordinator?.start()
+    }
+    
+    func startFromHome() {
+        starterCoordinator = HomeCoordinator(navigationController: navigationController, parentCoordinator: self)
         starterCoordinator?.start()
     }
     

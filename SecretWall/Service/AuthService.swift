@@ -12,6 +12,12 @@ protocol AuthServiceProtocol {
 }
 
 class AuthServiceImpl: AuthServiceProtocol {
+    private let session: URLSession
+    
+    init(session: URLSession) {
+        self.session = session
+    }
+    
     func loginWithApple(authRequest: AuthRequest)  async throws -> AuthResponse {
         var request = URLRequest(url: Url.loginWithApple)
         request.httpMethod = HttpMethods.post
@@ -20,7 +26,7 @@ class AuthServiceImpl: AuthServiceProtocol {
         let jsonData = try JSONEncoder().encode(authRequest)
         request.httpBody = jsonData
         
-        let (data, urlResponse) = try await URLSession.shared.data(for: request)
+        let (data, urlResponse) = try await session.data(for: request)
         
         guard let httpResponse = urlResponse as? HTTPURLResponse else {
             throw URLError(.badServerResponse)
